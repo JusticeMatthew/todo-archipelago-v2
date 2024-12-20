@@ -6,6 +6,7 @@ interface Props {
   framework: "Astro" | "Solid" | "Svelte" | "React" | "Vue" | "Alpine";
 }
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { framework }: Props = Astro.props;
 
 const backgroundColor = {
@@ -25,12 +26,37 @@ const backgroundColor = {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{`Todo Archipelago | ${framework}`}</title>
+    <meta name="description" content="A simple Todo List, made with islands." />
     <link rel="preload" as="font" type="font/woff2" href="fonts/Inter.woff2" />
     <link
       rel="preload"
       as="font"
       type="font/woff2"
       href="fonts/Roboto-Slab.woff2"
+    />
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Todo Archipelago" />
+    <meta property="og:image" content="og-image.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:title" content={`Todo Archipelago | ${framework}`} />
+    <meta
+      property="og:description"
+      content="A simple Todo List, made with islands."
+    />
+    <!-- Social Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content="og-image.webp" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta
+      property="twitter:title"
+      content={`Todo Archipelago | ${framework}`}
+    />
+    <meta
+      property="twitter:description"
+      content="A simple Todo List, made with islands."
     />
   </head>
 

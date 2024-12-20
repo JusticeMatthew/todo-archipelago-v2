@@ -4,13 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 import netlify from "@astrojs/netlify";
 import solid from "@astrojs/solid-js";
 import react from "@astrojs/react";
-import node from "@astrojs/node";
+// import node from "@astrojs/node";
 import svelte from "@astrojs/svelte";
 import vue from "@astrojs/vue";
 // import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "todo-archipelago.netlify.app",
   output: "server",
   adapter: netlify(),
   vite: {
@@ -19,7 +20,7 @@ export default defineConfig({
   experimental: {
     svg: true,
     session: {
-      driver: "netlify-blobs",
+      driver: "fs",
       options: {
         // @ts-expect-error
         name: "astro-sessions",
