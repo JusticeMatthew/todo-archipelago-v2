@@ -20,7 +20,7 @@ export default defineConfig({
   experimental: {
     svg: true,
     session: {
-      driver: "fs",
+      driver: "netlify-blobs",
       options: {
         // @ts-expect-error
         name: "astro-sessions",
