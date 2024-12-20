@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-// import netlify from "@astrojs/netlify";
+import netlify from "@astrojs/netlify";
 import solidJs from "@astrojs/solid-js";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
@@ -12,16 +12,19 @@ import vue from "@astrojs/vue";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: netlify(),
   vite: {
     plugins: [tailwindcss()],
   },
   experimental: {
     svg: true,
     session: {
-      driver: "fs",
+      driver: "netlify-blobs",
+      options: {
+        // @ts-expect-error
+        name: "astro-sessions",
+        consistency: "strong",
+      },
     },
   },
   integrations: [
