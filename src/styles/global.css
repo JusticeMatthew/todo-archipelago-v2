@@ -108,9 +108,10 @@ section {
 @media (max-width: 1200px) {
   section {
     display: flex;
-    margin-top: clamp(10rem, 7.5327rem + 11.9626vi, 18rem);
+    margin-top: clamp(6rem, 6.5327rem + 10.9626vi, 18rem);
     flex-direction: column;
     justify-content: flex-start;
+    margin-bottom: 24px;
   }
 
   .list-base {
