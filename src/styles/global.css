@@ -101,6 +101,7 @@ section {
   display: flex;
   margin-top: clamp(10rem, 7.5327rem + 11.9626vi, 18rem);
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: start;
   justify-content: space-between;
 }
