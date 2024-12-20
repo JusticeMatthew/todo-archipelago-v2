@@ -31,7 +31,7 @@ export default function ReactList({ list }) {
   return (
     <div className="list-base">
       <p className="text-level-1">
-        Your <span className="framework decoration-react">React</span> todo list
+        Your <span className="framework react-decoration">React</span> todo list
       </p>
       <form onSubmit={handleAddTask} className="add-form">
         <input
@@ -41,13 +41,13 @@ export default function ReactList({ list }) {
           value={task}
           name="task"
           placeholder="add a new task..."
-          className="add-input focus:ring-react hover:ring-react"
+          className="add-input react-input"
           onChange={(e) => setTask(e.target.value)}
         />
         <button
           type="submit"
           aria-label="add todo button"
-          className="add-button hover:bg-react">
+          className="add-button react-button">
           Add
         </button>
       </form>
