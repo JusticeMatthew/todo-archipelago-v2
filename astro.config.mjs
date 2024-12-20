@@ -11,7 +11,7 @@ import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "todo-archipelago.netlify.app",
+  site: "https://todo-archipelago.netlify.app",
   output: "server",
   adapter: netlify(),
   vite: {
