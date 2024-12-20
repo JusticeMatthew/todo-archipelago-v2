@@ -116,3 +116,9 @@ section {
   align-items: start;
   justify-content: space-between;
 }
+
+.react-button {
+  &:hover {
+    background-color: var(--color-react);
+  }
+}
