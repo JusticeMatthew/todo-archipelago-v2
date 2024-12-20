@@ -79,18 +79,6 @@
   @apply bg-highlight ml-2 cursor-pointer rounded-lg px-4 py-3 hover:bg-red-900 active:scale-95;
 }
 
-@utility react-decoration {
-  @apply decoration-react;
-}
-
-@utility react-input {
-  @apply focus:ring-react hover:ring-react;
-}
-
-@utility react-button {
-  @apply hover:bg-react;
-}
-
 body {
   line-height: 1.5;
   font-size: var(--text-base);
@@ -115,6 +103,19 @@ section {
   flex-direction: row;
   align-items: start;
   justify-content: space-between;
+}
+
+.react-decoration {
+  text-decoration-color: var(--color-react);
+}
+
+.react-input {
+  &:focus {
+    --tw-ring-color: var(--color-react);
+  }
+  &:hover {
+    --tw-ring-color: var(--color-react);
+  }
 }
 
 .react-button {
