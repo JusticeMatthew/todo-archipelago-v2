@@ -1,0 +1,16 @@
+<!-- ---
+import BaseLayout from "$/layouts/BaseLayout.astro";
+import LeftContent from "$/components/LeftContent.astro";
+// import AlpineList from "$/components/alpine/AlpineList.astro";
+
+const list = await Astro.session?.get("list");
+---
+
+<BaseLayout framework="Alpine">
+  <section>
+    <LeftContent />
+    <div x-data="{ list: yourListData }">
+      <AlpineList />
+    </div>
+  </section>
+</BaseLayout> -->

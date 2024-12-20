@@ -1,0 +1,65 @@
+<div
+  x-data="{
+    task: '',
+    list: list,  // list is passed in as a prop
+    
+    async addTask(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const { data, error } = await actions.addTask(formData);
+      
+      if (!error) {
+        this.list = data;
+        this.task = '';
+      } else {
+        console.error(error);
+      }
+    },
+
+    async deleteTask(index) {
+      const { data, error } = await actions.deleteTask(index);
+      
+      if (!error) {
+        this.list = data;
+      } else {
+        console.error(error);
+      }
+    }
+  }"
+  class="list-base">
+  <p class="text-level-1">
+    Your <span class="framework decoration-solid">Alpine</span> todo list
+  </p>
+
+  <form @submit="addTask" class="add-form">
+    <input
+      id="task"
+      required
+      autocomplete="off"
+      x-model="task"
+      name="task"
+      placeholder="add a new task..."
+      class="add-input focus:ring-solid hover:ring-solid"
+    />
+    <button
+      type="submit"
+      aria-label="add todo button"
+      class="add-button hover:bg-solid">
+      Add
+    </button>
+  </form>
+
+  <div>
+    <template x-for="(task, index) in list" :key="index">
+      <div class="todo-wrapper">
+        <p class="todo-content" x-text="task"></p>
+        <button
+          @click="deleteTask(index)"
+          aria-label="delete task button"
+          class="delete-button">
+          X
+        </button>
+      </div>
+    </template>
+  </div>
+</div>

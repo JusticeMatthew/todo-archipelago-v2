@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto-Slab";
+  src: url("/fonts/Roboto-Slab.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --default-font-family: "Inter", "sans-serif";
+
+  --font-inter: "Inter", "sans-serif";
+  --font-slab: "Roboto-Slab", "serif";
+
+  --color-light: hsl(210deg, 40%, 98%);
+  --color-dark: hsl(224deg, 37%, 8%);
+  --color-astro: hsl(323deg, 32%, 69%);
+  --color-solid: hsl(214deg, 39%, 62%);
+  --color-svelte: hsl(15deg, 50%, 50%);
+  --color-react: hsl(195deg, 53%, 60%);
+  --color-vue: hsl(152deg, 27%, 53%);
+  --color-alpine: hsl(193deg, 18%, 69%);
+  --color-highlight: rgba(248, 250, 252, 0.1);
+
+  --text-base: clamp(1rem, 0.9628rem + 0.1802vi, 1.125rem);
+  --text-level-1: clamp(1.2rem, 1.1109rem + 0.4319vi, 1.4996rem);
+  --text-level-2: clamp(1.44rem, 1.2738rem + 0.8058vi, 1.999rem);
+  --text-level-3: clamp(1.728rem, 1.4495rem + 1.3502vi, 2.6647rem);
+  --text-level-4: clamp(2.0736rem, 1.6341rem + 2.131vi, 3.552rem);
+  --text-level-5: clamp(2.4883rem, 1.8204rem + 3.2382vi, 4.7348rem);
+  --text-level-6: clamp(2.986rem, 1.9973rem + 4.7936vi, 6.3115rem);
+}
+
+@utility container {
+  max-width: clamp(16rem, 100%, 90rem);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@utility list-base {
+  @apply bg-dark/75 text-light ring-dark ml-32 flex w-full flex-col rounded-lg p-8 ring shadow backdrop-blur-lg;
+}
+
+@utility framework {
+  @apply underline decoration-2 underline-offset-6;
+}
+
+@utility add-form {
+  @apply mt-6 flex w-full self-end;
+}
+
+@utility add-input {
+  @apply bg-highlight w-full rounded-md p-3 outline-none hover:ring-2 focus:placeholder-transparent focus:ring-2;
+}
+
+@utility add-button {
+  @apply bg-dark/75 ring-dark disabled:text-light/50 disabled:bg-dark/75 ml-2 flex cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium ring transition-all duration-200 active:scale-95 disabled:pointer-events-none disabled:cursor-pointer;
+}
+
+@utility todo-wrapper {
+  @apply flex flex-row items-center first:mt-6;
+}
+
+@utility todo-content {
+  @apply bg-highlight my-1 w-full rounded-lg px-3 py-2;
+}
+
+@utility delete-button {
+  @apply bg-highlight ml-2 cursor-pointer rounded-lg px-4 py-3 hover:bg-red-900 active:scale-95;
+}
+
+body {
+  line-height: 1.5;
+  font-size: var(--text-base);
+  color: var(--color-dark);
+  overflow-x: clip;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+h1,
+h2,
+h3,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+section {
+  display: flex;
+  margin-top: clamp(10rem, 7.5327rem + 11.9626vi, 18rem);
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+}

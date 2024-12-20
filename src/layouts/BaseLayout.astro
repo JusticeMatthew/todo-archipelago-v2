@@ -1,0 +1,43 @@
+---
+import "$/styles/global.css";
+import Header from "$/components/Header.astro";
+
+interface Props {
+  framework: "Astro" | "Solid" | "Svelte" | "React" | "Vue" | "Alpine";
+}
+
+const { framework }: Props = Astro.props;
+
+const backgroundColor = {
+  Astro: "bg-astro",
+  Solid: "bg-solid",
+  Svelte: "bg-svelte",
+  React: "bg-react",
+  Vue: "bg-vue",
+  Alpine: "bg-alpine",
+}[framework];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{`Todo Archipelago | ${framework}`}</title>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/Inter.woff2" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="fonts/Roboto-Slab.woff2"
+    />
+  </head>
+
+  <body class={backgroundColor}>
+    <Header />
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>

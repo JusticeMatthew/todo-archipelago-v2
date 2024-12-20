@@ -1,0 +1,14 @@
+---
+import BaseLayout from "$/layouts/BaseLayout.astro";
+import LeftContent from "$/components/LeftContent.astro";
+import SvelteList from "$/components/svelte/SvelteList.svelte";
+
+const list = await Astro.session?.get("list");
+---
+
+<BaseLayout framework="Svelte">
+  <section>
+    <LeftContent />
+    <SvelteList list={list} client:idle />
+  </section>
+</BaseLayout>

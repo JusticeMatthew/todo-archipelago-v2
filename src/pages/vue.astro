@@ -1,0 +1,14 @@
+---
+import BaseLayout from "$/layouts/BaseLayout.astro";
+import LeftContent from "$/components/LeftContent.astro";
+import VueList from "$/components/vue/VueList.vue";
+
+const list = await Astro.session?.get("list");
+---
+
+<BaseLayout framework="Vue">
+  <section>
+    <LeftContent />
+    <VueList list={list} client:idle />
+  </section>
+</BaseLayout>

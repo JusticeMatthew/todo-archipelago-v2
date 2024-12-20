@@ -1,0 +1,52 @@
+---
+import AstroLogo from "$/assets/icons/astro-logo.svg";
+import SolidLogo from "$/assets/icons/solid-logo.svg";
+import SvelteLogo from "$/assets/icons/svelte-logo.svg";
+import ReactLogo from "$/assets/icons/react-logo.svg";
+import VueLogo from "$/assets/icons/vue-logo.svg";
+import AlpineLogo from "$/assets/icons/alpine-logo.svg";
+---
+
+<header
+  class="bg-dark/75 text-light ring-dark sticky mx-auto mt-6 flex max-w-min rounded-full px-8 ring shadow backdrop-blur-lg">
+  <a href="/">
+    <AstroLogo class="logo" />Astro
+  </a>
+  <a href="/solid">
+    <SolidLogo class="logo" />Solid
+  </a>
+  <a href="/svelte">
+    <SvelteLogo class="logo" />Svelte
+  </a>
+  <a href="/react">
+    <ReactLogo class="logo" />React
+  </a>
+  <a href="/vue">
+    <VueLogo class="logo" />Vue
+  </a>
+  <!-- <a href="/alpine">
+    <AlpineLogo class="logo" />Alpine
+  </a> -->
+</header>
+
+<style>
+  a {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all;
+    transition-duration: 300ms;
+    text-wrap: nowrap;
+  }
+
+  a:hover {
+    background-color: var(--color-highlight);
+  }
+
+  .logo {
+    height: 24px;
+    width: 24px;
+  }
+</style>

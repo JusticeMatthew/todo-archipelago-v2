@@ -1,0 +1,14 @@
+---
+import BaseLayout from "$/layouts/BaseLayout.astro";
+import LeftContent from "$/components/LeftContent.astro";
+import ReactList from "$/components/react/ReactList.jsx";
+
+const list = await Astro.session?.get("list");
+---
+
+<BaseLayout framework="React">
+  <section>
+    <LeftContent />
+    <ReactList list={list} client:only="react" />
+  </section>
+</BaseLayout>

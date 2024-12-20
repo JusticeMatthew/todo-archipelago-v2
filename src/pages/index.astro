@@ -1,11 +1,127 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "$/layouts/BaseLayout.astro";
+import LeftContent from "$/components/LeftContent.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const list = await Astro.session?.get("list");
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<script>
+  import { actions } from "astro:actions";
+
+  const astroForm = document.getElementById("astro-form") as HTMLFormElement;
+  const addButton = document.getElementById("astro-add") as HTMLButtonElement;
+  const deleteButtons = document.querySelectorAll(".delete-button");
+
+  if (deleteButtons.length) {
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const id = parseInt(button.id);
+        const { error } = await actions.deleteTask(id);
+
+        if (!error) {
+          const deletedTask = document.getElementById(`astro-wrapper-${id}`);
+          deletedTask?.remove();
+        } else {
+          console.error(error);
+        }
+      });
+    });
+  }
+
+  astroForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    addButton.disabled = true;
+    const formData = new FormData(astroForm);
+    const { data, error } = await actions.addTask(formData);
+
+    if (!error) {
+      const astroList = document.getElementById(
+        "astro-list-container",
+      ) as HTMLElement;
+      const newWrapper = document.createElement("div") as HTMLDivElement;
+      const newDeleteButton = document.createElement(
+        "button",
+      ) as HTMLButtonElement;
+      const newTask = document.createElement("p") as HTMLParagraphElement;
+      const newTaskIndex = data.length - 1;
+
+      newWrapper.className = "todo-wrapper";
+      newWrapper.id = `astro-wrapper-${newTaskIndex}`;
+
+      newTask.textContent = `${data[newTaskIndex]}`;
+      newTask.className = "todo-content";
+
+      newDeleteButton.id = `${newTaskIndex}`;
+      newDeleteButton.textContent = "X";
+      newDeleteButton.className = "delete-button";
+      newDeleteButton.ariaLabel = "delete task button";
+
+      newDeleteButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const { error } = await actions.deleteTask(newTaskIndex);
+
+        if (!error) {
+          const deletedTask = document.getElementById(
+            `astro-wrapper-${newTaskIndex}`,
+          );
+          deletedTask?.remove();
+        } else {
+          console.error(error);
+        }
+      });
+
+      newWrapper.appendChild(newTask);
+      newWrapper.appendChild(newDeleteButton);
+      astroList.appendChild(newWrapper);
+
+      astroForm.reset();
+      addButton.disabled = false;
+    } else {
+      console.log(error);
+    }
+  });
+</script>
+
+<BaseLayout framework="Astro">
+  <section>
+    <LeftContent />
+    <div class="list-base">
+      <p class="text-level-1">
+        Your <span class="framework decoration-astro">Astro</span> todo list
+      </p>
+      <form id="astro-form" class="add-form">
+        <input
+          id="astro-task"
+          required
+          autocomplete="off"
+          name="task"
+          placeholder="add a new task..."
+          class="add-input focus:ring-astro hover:ring-astro"
+        />
+        <button
+          id="astro-add"
+          type="submit"
+          aria-label="add todo button"
+          class="add-button hover:bg-astro">
+          Add
+        </button>
+      </form>
+      <div id="astro-list-container">
+        {
+          list.map((task: string, index: number) => (
+            <div id={`astro-wrapper-${index}`} class="todo-wrapper">
+              <p class="todo-content">{task}</p>
+              <button
+                id={`${index}`}
+                aria-label="delete task"
+                class="delete-button">
+                X
+              </button>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

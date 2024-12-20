@@ -1,0 +1,14 @@
+---
+import BaseLayout from "$/layouts/BaseLayout.astro";
+import LeftContent from "$/components/LeftContent.astro";
+import SolidList from "$/components/solid/SolidList";
+
+const list = await Astro.session?.get("list");
+---
+
+<BaseLayout framework="Solid">
+  <section>
+    <LeftContent />
+    <SolidList list={list} client:idle />
+  </section>
+</BaseLayout>

@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "todo-archipelago-v2",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,30 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.1.0"
+    "@astrojs/alpinejs": "^0.4.0",
+    "@astrojs/netlify": "^6.0.1",
+    "@astrojs/node": "^9.0.0",
+    "@astrojs/react": "^4.1.1",
+    "@astrojs/solid-js": "^5.0.0",
+    "@astrojs/svelte": "^7.0.1",
+    "@astrojs/vue": "^5.0.2",
+    "@tailwindcss/vite": "4.0.0-beta.8",
+    "@types/alpinejs": "^3.13.11",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "alpinejs": "^3.14.7",
+    "astro": "^5.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "solid-js": "^1.9.3",
+    "svelte": "^5.15.0",
+    "tailwindcss": "4.0.0-beta.8",
+    "typescript": "^5.7.2",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.8"
   }
 }
