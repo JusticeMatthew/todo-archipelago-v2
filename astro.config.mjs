@@ -2,7 +2,7 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import netlify from "@astrojs/netlify";
-import solidJs from "@astrojs/solid-js";
+import solid from "@astrojs/solid-js";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
 import svelte from "@astrojs/svelte";
@@ -31,7 +31,7 @@ export default defineConfig({
     react({
       include: ["**/react/"],
     }),
-    solidJs({
+    solid({
       include: ["**/solid/*"],
     }),
     svelte(),
