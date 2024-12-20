@@ -101,9 +101,22 @@ section {
   display: flex;
   margin-top: clamp(10rem, 7.5327rem + 11.9626vi, 18rem);
   flex-direction: row;
-  flex-wrap: wrap;
   align-items: start;
   justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+  section {
+    display: flex;
+    margin-top: clamp(10rem, 7.5327rem + 11.9626vi, 18rem);
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .list-base {
+    margin-left: 0 !important;
+    margin-top: calc(var(--spacing) * 32) !important;
+  }
 }
 
 .react-decoration {

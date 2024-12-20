@@ -10,19 +10,24 @@ import AlpineLogo from "$/assets/icons/alpine-logo.svg";
 <header
   class="bg-dark/75 text-light ring-dark sticky mx-auto mt-6 flex max-w-min rounded-full px-8 ring shadow backdrop-blur-lg">
   <a href="/">
-    <AstroLogo class="logo" />Astro
+    <AstroLogo class="logo" />
+    <span>Astro</span>
   </a>
   <a href="/solid">
-    <SolidLogo class="logo" />Solid
+    <SolidLogo class="logo" />
+    <span>Solid</span>
   </a>
   <a href="/svelte">
-    <SvelteLogo class="logo" />Svelte
+    <SvelteLogo class="logo" />
+    <span>Svelte</span>
   </a>
   <a href="/react">
-    <ReactLogo class="logo" />React
+    <ReactLogo class="logo" />
+    <span>React</span>
   </a>
   <a href="/vue">
-    <VueLogo class="logo" />Vue
+    <VueLogo class="logo" />
+    <span>Vue</span>
   </a>
   <!-- <a href="/alpine">
     <AlpineLogo class="logo" />Alpine
@@ -48,5 +53,11 @@ import AlpineLogo from "$/assets/icons/alpine-logo.svg";
   .logo {
     height: 24px;
     width: 24px;
+  }
+
+  @media (max-width: 800px) {
+    span {
+      display: none;
+    }
   }
 </style>
