@@ -13,7 +13,7 @@ import vue from "@astrojs/vue";
 export default defineConfig({
   site: "https://todo-archipelago.netlify.app",
   output: "server",
-  adapter: node({ mode: "standalone" }),
+  adapter: netlify(),
   vite: {
     plugins: [tailwindcss()],
   },
@@ -21,11 +21,11 @@ export default defineConfig({
     svg: true,
     session: {
       driver: "fs",
-      // options: {
-      //   // @ts-expect-error
-      //   name: "astro-sessions",
-      //   consistency: "strong",
-      // },
+      options: {
+        // @ts-expect-error
+        name: "astro-sessions",
+        consistency: "strong",
+      },
     },
   },
   integrations: [
